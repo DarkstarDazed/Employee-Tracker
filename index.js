@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
 require("console.table");
+const { consoleTable } = require("console-table-printer");
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -14,6 +15,27 @@ db.connect((err) => {
   if (err) throw err;
   startPrompt();
 });
+
+function viewDepartments() {
+    db.query("select * from department", (err, data) => {
+        consoleTable(data);
+        startPrompt();
+    });
+}
+
+function viewRoles() {
+    db.query("select * from role", (err, data) => {
+        consoleTable(data);
+        startPrompt();
+    });
+}
+
+function viewEmployees() {
+    db.query("select * from employee", (err, data) => {
+        consoleTable(data);
+        startPrompt();
+    });
+}
 
 
 
