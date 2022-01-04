@@ -44,6 +44,7 @@ function viewEmployees() {
 
 
 
+
 function startPrompt() {
     inquirer
     .prompt([
